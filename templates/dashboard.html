@@ -1,0 +1,75 @@
+<h2>Welcome {{ current_user.name }}</h2>
+
+<a href="/logout">Logout</a>
+
+<h3>Add Availability</h3>
+<form action="/add_time" method="POST">
+  Day: <input name="day" required>
+  Start: <input name="start" type="number" required>
+  End: <input name="end" type="number" required>
+  <button>Add</button>
+</form>
+
+<h3>Find Study Partner</h3>
+<form action="/find_matches" method="POST">
+  Day: <input name="day" required>
+  Start: <input name="start" type="number" required>
+  End: <input name="end" type="number" required>
+  <button>Send Invitation</button>
+</form>
+
+<h3>Pending Invitations Received</h3>
+<ul>
+{% for inv in received_invitations %}
+  {% if inv.status == "pending" %}
+    <li>
+      {{ inv.requester }} invited you for {{ inv.time_slot }}
+
+      <form action="/accept_invitation" method="POST" style="display:inline;">
+        <input type="hidden" name="invitation_id" value="{{ inv.invitation_id }}">
+        <button type="submit">Accept</button>
+      </form>
+
+      <form action="/reject_invitation" method="POST" style="display:inline;">
+        <input type="hidden" name="invitation_id" value="{{ inv.invitation_id }}">
+        <button type="submit">Reject</button>
+      </form>
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+{% if not received_invitations or received_invitations|selectattr("status", "equalto", "pending")|list|length == 0 %}
+  <p>No pending invitations received.</p>
+{% endif %}
+
+<h3>Invitations Sent</h3>
+<ul>
+{% for inv in sent_invitations %}
+  <li>
+    To {{ inv.invitee }} for {{ inv.time_slot }} — <strong>{{ inv.status }}</strong>
+  </li>
+{% endfor %}
+</ul>
+
+{% if sent_invitations|length == 0 %}
+  <p>No invitations sent yet.</p>
+{% endif %}
+
+<h3>Students</h3>
+<ul>
+{% for s in students %}
+  <li>{{ s.name }} ({{ s.usage_count }} matches)</li>
+{% endfor %}
+</ul>
+
+<h3>Match History</h3>
+<ul>
+{% for m in matches %}
+  <li>{{ m.student1 }} with {{ m.student2 }} at {{ m.time_slot }}</li>
+{% endfor %}
+</ul>
+
+{% if matches|length == 0 %}
+  <p>No confirmed matches yet.</p>
+{% endif %}

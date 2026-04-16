@@ -1,0 +1,178 @@
+{
+    "students": [
+        {
+            "id": "1",
+            "name": "Paola",
+            "usage": 2,
+            "avail": [
+                {
+                    "day": "Monday",
+                    "start": 7,
+                    "end": 11
+                },
+                {
+                    "day": "Tuesday",
+                    "start": 7,
+                    "end": 11
+                },
+                {
+                    "day": "Wednesday",
+                    "start": 7,
+                    "end": 11
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Carlota",
+            "usage": 2,
+            "avail": [
+                {
+                    "day": "Monday",
+                    "start": 7,
+                    "end": 11
+                },
+                {
+                    "day": "Wednesday",
+                    "start": 8,
+                    "end": 11
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Carlos",
+            "usage": 0,
+            "avail": [
+                {
+                    "day": "Tuesday",
+                    "start": 8,
+                    "end": 11
+                }
+            ]
+        }
+    ],
+    "matches": [
+        {
+            "student1": "Carlota",
+            "student2": "Paola",
+            "time_slot": {
+                "day": "Monday",
+                "start": 8,
+                "end": 9
+            }
+        },
+        {
+            "student1": "Carlota",
+            "student2": "Paola",
+            "time_slot": {
+                "day": "Wednesday",
+                "start": 8,
+                "end": 9
+            }
+        }
+    ],
+    "study_requests": [
+        {
+            "request_id": "1",
+            "requester": "Carlota",
+            "time_slot": {
+                "day": "Monday",
+                "start": 8,
+                "end": 9
+            },
+            "candidate_names": [
+                "Paola"
+            ],
+            "candidate_slots": [
+                {
+                    "day": "Monday",
+                    "start": 8,
+                    "end": 9
+                }
+            ],
+            "current_index": 0,
+            "status": "matched"
+        },
+        {
+            "request_id": "2",
+            "requester": "Carlos",
+            "time_slot": {
+                "day": "Tuesday",
+                "start": 8,
+                "end": 9
+            },
+            "candidate_names": [
+                "Paola"
+            ],
+            "candidate_slots": [
+                {
+                    "day": "Tuesday",
+                    "start": 8,
+                    "end": 9
+                }
+            ],
+            "current_index": 1,
+            "status": "closed"
+        },
+        {
+            "request_id": "3",
+            "requester": "Carlota",
+            "time_slot": {
+                "day": "Wednesday",
+                "start": 8,
+                "end": 9
+            },
+            "candidate_names": [
+                "Paola"
+            ],
+            "candidate_slots": [
+                {
+                    "day": "Wednesday",
+                    "start": 8,
+                    "end": 9
+                }
+            ],
+            "current_index": 0,
+            "status": "matched"
+        }
+    ],
+    "invitations": [
+        {
+            "invitation_id": "1",
+            "request_id": "1",
+            "requester": "Carlota",
+            "invitee": "Paola",
+            "time_slot": {
+                "day": "Monday",
+                "start": 8,
+                "end": 9
+            },
+            "status": "accepted"
+        },
+        {
+            "invitation_id": "2",
+            "request_id": "2",
+            "requester": "Carlos",
+            "invitee": "Paola",
+            "time_slot": {
+                "day": "Tuesday",
+                "start": 8,
+                "end": 9
+            },
+            "status": "rejected"
+        },
+        {
+            "invitation_id": "3",
+            "request_id": "3",
+            "requester": "Carlota",
+            "invitee": "Paola",
+            "time_slot": {
+                "day": "Wednesday",
+                "start": 8,
+                "end": 9
+            },
+            "status": "accepted"
+        }
+    ]
+}
